@@ -68,9 +68,94 @@ body{background:var(--bg);color:var(--text);}
 @media (max-width:480px){ .header-subline{ left:12px; bottom:10px; font-size:.875rem; } }
 </style>
 
+<style>
+/* KBridge logo placement */
+.header .brand-logo{position:absolute; right:16px; top:10px; display:flex; align-items:center; gap:8px;}
+.header .brand-logo img{width:280px; height:auto; max-height:63px; object-fit:contain;}
+@media (max-width:280px){
+  .header .brand-logo img{width:280px; max-height:63px;}
+}
+</style>
+<style>
+/* KBridge white logo above air volumetric weight rules */
+.kbridge-logo-air{display:flex;justify-content:center;align-items:center;margin:12px 0 6px;}
+.kbridge-logo-air img{max-width:280px;height:auto;object-fit:contain;opacity:0.95;}
+@media (max-width:280px){.kbridge-logo-air img{max-width:280px;}}
+</style>
+<style id="mobile-optimizations">
+/* === Mobile Size Optimizations (non-destructive) === */
+/* Fluid base type scale for small screens */
+html { font-size: clamp(14px, 3.2vw, 16px); }
 
+@media (max-width: 640px){
+  main { padding: 1rem !important; }
+  .gradient-card { padding: 1rem !important; border-radius: 14px; }
+  header h1 { font-size: clamp(1.125rem, 5vw, 1.375rem) !important; line-height: 1.25 !important; }
+  .header-subline { font-size: .875rem !important; max-width: 92%; }
+  .air-rule-toolbar { font-size: .75rem; gap: .375rem; }
+  .badge { font-size: .6875rem; padding: .15rem .5rem; }
+  .btn, .btn-ghost { padding: .5rem .7rem; border-radius: 10px; }
+  .input, .select { max-width: 5.25rem !important; padding: .35rem .5rem; font-size: .875rem; }
+  .rwd-wrap { -webkit-overflow-scrolling: touch; overflow-x: auto; }
+  .rwd-table { table-layout: fixed; min-width: 660px; }
+  .rwd-table th, .rwd-table td { padding: .4rem .5rem; }
+  /* Narrower column widths to reduce horizontal scroll in mobile */
+  .rwd-table th:nth-child(1), .rwd-table td:nth-child(1) { width: 5.5rem; }
+  .rwd-table th:nth-child(2), .rwd-table td:nth-child(2) { width: 5.5rem; }
+  .rwd-table th:nth-child(3), .rwd-table td:nth-child(3) { width: 5.5rem; }
+  .rwd-table th:nth-child(4), .rwd-table td:nth-child(4) { width: 5.0rem; }
+  .rwd-table th:nth-child(5), .rwd-table td:nth-child(5) { width: 5.25rem; }
+  .rwd-table th:nth-child(6), .rwd-table td:nth-child(6) { width: 5.0rem; }
+  .rwd-table th:nth-child(7), .rwd-table td:nth-child(7) { width: 5.5rem; }
+  .rwd-table th:nth-child(8), .rwd-table td:nth-child(8) { width: 5.5rem; }
+  .rwd-table th:nth-child(9), .rwd-table td:nth-child(9) { width: 4.5rem; }
+  /* Brand/air logos scale down to avoid overlap */
+  .header .brand-logo img, .kbridge-logo-air img { max-width: 160px !important; max-height: 40px !important; }
+}
 
+/* Ultra-small devices */
+@media (max-width: 360px){
+  .input, .select { max-width: 4.75rem !important; }
+  .rwd-table { min-width: 620px; }
+}
 
+/* Optional: sticky first column for better readability on scroll */
+@media (max-width: 640px){
+  .rwd-table thead th:first-child, .rwd-table tbody td:first-child {
+    position: sticky; left: 0;
+    background: var(--card); z-index: 6;
+    box-shadow: 1px 0 0 var(--border);
+  }
+}
+</style>
+<style>
+/* ===== Mobile overlap fixes (hero badges & input header buttons) ===== */
+@media (max-width: 480px){
+  /* Hero subline & air-rule toolbar: prevent overlap with title */
+  .header-subline{ position: static !important; margin-top: .25rem !important; }
+  .air-rule-toolbar{
+    position: static !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: .375rem !important;
+    margin-top: .25rem !important;
+  }
+  .air-rule-toolbar .badge{ flex: 0 0 auto; }
+  .gradient-card{ min-height: 140px !important; }
+
+  /* Input section header: let button group wrap below title */
+  section.card > .mb-3.flex{
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    gap: .5rem !important;
+  }
+  section.card > .mb-3.flex h2{ margin-right: auto !important; }
+  section.card > .mb-3.flex > .flex{
+    flex-wrap: wrap !important;
+    gap: .5rem !important;
+  }
+}
+</style>
 </head>
 <body class="min-h-full bg-slate-50">
   <main class="mx-auto max-w-6xl p-6 md:p-10">
