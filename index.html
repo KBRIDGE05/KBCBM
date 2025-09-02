@@ -156,6 +156,52 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
   }
 }
 </style>
+<style>
+/* ===== Responsive spec-table: show all fields at once on small screens ===== */
+@media (max-width: 640px){
+  /* Hide header row on mobile and turn each table row into a labeled block */
+  .spec-table thead{ display:none; }
+  .spec-table, .spec-table tbody, .spec-table tr, .spec-table td{ display:block; width:100%; }
+  .spec-table tr{
+    border:1px solid rgba(15,23,42,.08);
+    border-radius:12px;
+    padding:10px 12px;
+    margin-bottom:10px;
+    background:#fff;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+  }
+  .spec-table td{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:6px 0;
+    border-bottom:1px dashed rgba(15,23,42,.08);
+  }
+  .spec-table td:last-child{ border-bottom:none; }
+
+  /* Labels using nth-child to map header names */
+  .spec-table td:nth-child(1)::before{ content:"Size & Type"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(2)::before{ content:"Height"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(3)::before{ content:"Tare (kg)"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(4)::before{ content:"Payload (kg)"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(5)::before{ content:"Max.Gross (kg)"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(6)::before{ content:"Door W×H (mm)"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(7)::before{ content:"내부 L×W×H (mm)"; font-weight:600; color:#334155; }
+  .spec-table td:nth-child(8)::before{ content:"내부 용적 (m³)"; font-weight:600; color:#334155; }
+
+  .spec-table td::before{
+    content: attr(data-label);
+    flex:0 0 46%;
+    max-width:54%;
+    padding-right:8px;
+  }
+  /* Value */
+  .spec-table td{
+    font-weight:600;
+    color:#0f172a;
+  }
+}
+</style>
 </head>
 <body class="min-h-full bg-slate-50">
   <main class="mx-auto max-w-6xl p-6 md:p-10">
