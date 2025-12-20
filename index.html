@@ -273,14 +273,14 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
         <p id="totalWeight" class="text-2xl font-bold tracking-tight">0</p>
       </div>
       <div class="card p-4">
-        <p class="text-xs text-slate-500">항공 C/W (산출중량, kg)</p>
+        <p class="text-xs text-slate-500">항공 산출중량 C/W (kg)</p>
         <p id="airVol" class="text-2xl font-bold tracking-tight">0</p>
-        <p class="text-[11px] text-slate-500">(부피중량: Σ m³ × 1,000,000 ÷ <span id="airFactorLabel">6000</span> · C/W = max(총중량, 부피중량))</p>
+        <p class="text-[11px] text-slate-500">실중량 <span id="airActualW">0</span> kg · 부피중량 <span id="airVolOnly">0</span> kg (÷ <span id="airFactorLabel">6000</span>)</p>
       </div>
       <div class="card p-4">
-        <p class="text-xs text-slate-500">해상 R/T (운임톤)</p>
+        <p class="text-xs text-slate-500">해상 톤측정 (kg)</p>
         <p id="seaWm" class="text-2xl font-bold tracking-tight">0</p>
-        <p class="text-[11px] text-slate-500">(R/T = max(Σ m³, Σ kg ÷ 1000))</p>
+        <p class="text-[11px] text-slate-500">(Σ m³ × 1000)</p>
       </div>
     </section>
 
@@ -358,6 +358,8 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
   const totalCbmEl = document.getElementById('totalCbm');
   const totalWeightEl = document.getElementById('totalWeight');
   const airVolEl = document.getElementById('airVol');
+  const airActualWEl = document.getElementById('airActualW');
+  const airVolOnlyEl = document.getElementById('airVolOnly');
   const seaWmEl = document.getElementById('seaWm');
   const airFactorLabel = document.getElementById('airFactorLabel');
   const yearEl = document.getElementById('year');
@@ -521,12 +523,14 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
     totalCbmEl.textContent = format(totalM3, 4);
     totalWeightEl.textContent = format(totalKg, 1);
 
-    const airVol = (totalM3 * 1_000_000) / (airDimFactor || 6000); // 부피중량(kg)
-    const airCw  = Math.max(totalKg, airVol); // 항공 산출중량(C/W)
-    const seaRt  = Math.max(totalM3, totalKg / 1000); // 해상 운임톤(R/T)
+    const airVol = (totalM3 * 1_000_000) / (airDimFactor || 6000); // volumetric weight (kg)
+    const airCw = Math.max(totalKg, airVol); // chargeable weight (kg)
+    const seaWm = totalM3 * 1000;
 
     airVolEl.textContent = format(airCw, 1);
-    seaWmEl.textContent = format(seaRt, 3);
+    if (airActualWEl) airActualWEl.textContent = format(totalKg, 1);
+    if (airVolOnlyEl) airVolOnlyEl.textContent = format(airVol, 1);
+    seaWmEl.textContent = format(seaWm, 1);
 
     containerBars.forEach(({capacity, bar, label, note, fit, card}, idx)=>{
       const pctRaw = capacity > 0 ? (totalM3 / capacity) * 100 : 0;
