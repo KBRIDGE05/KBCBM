@@ -2016,6 +2016,109 @@ footer{color:var(--muted-2) !important;}
 }
 </style>
 
+
+<style id="mobile-horizontal-row-v11">
+/* 모바일에서도 카드형 세로 스택 대신 가로 1줄 입력 유지 */
+@media (max-width: 768px){
+  .rwd-wrap{
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    -webkit-overflow-scrolling:touch !important;
+    border:1px solid #d6e1f0 !important;
+    background:#fff !important;
+  }
+  .rwd-table,
+  .rwd-table thead,
+  .rwd-table tbody,
+  .rwd-table tr{
+    width:100% !important;
+  }
+  .rwd-table{
+    display:table !important;
+    min-width:1120px !important;
+    border-collapse:separate !important;
+    border-spacing:0 !important;
+    table-layout:fixed !important;
+    background:#fff !important;
+  }
+  .rwd-table thead{ display:table-header-group !important; }
+  .rwd-table tbody{ display:table-row-group !important; }
+  .rwd-table tr{ display:table-row !important; }
+  .rwd-table th,
+  .rwd-table td{
+    display:table-cell !important;
+    width:auto !important;
+    vertical-align:middle !important;
+  }
+  .rwd-table thead th{
+    white-space:nowrap !important;
+    text-align:left !important;
+    padding:.62rem .7rem !important;
+    font-size:.75rem !important;
+    height:42px !important;
+  }
+  .rwd-table thead th:nth-child(7),
+  .rwd-table thead th:nth-child(8),
+  .rwd-table thead th:nth-child(9){
+    text-align:center !important;
+  }
+  .rwd-table tbody td{
+    padding:.42rem .7rem !important;
+    border-bottom:1px solid #e8eff8 !important;
+    text-align:left !important;
+  }
+  .rwd-table tbody td::before{
+    display:none !important;
+    content:none !important;
+  }
+
+  /* 모바일에서도 1줄로 길게 보이도록 입력칸 폭 확보 */
+  .rwd-table th:nth-child(1), .rwd-table td:nth-child(1),
+  .rwd-table th:nth-child(2), .rwd-table td:nth-child(2),
+  .rwd-table th:nth-child(3), .rwd-table td:nth-child(3){ width:9.5rem !important; }
+  .rwd-table th:nth-child(4), .rwd-table td:nth-child(4){ width:5.8rem !important; }
+  .rwd-table th:nth-child(5), .rwd-table td:nth-child(5){ width:8rem !important; }
+  .rwd-table th:nth-child(6), .rwd-table td:nth-child(6){ width:5.6rem !important; }
+  .rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
+  .rwd-table th:nth-child(8), .rwd-table td:nth-child(8){ width:6.2rem !important; }
+  .rwd-table th:nth-child(9), .rwd-table td:nth-child(9){ width:5rem !important; }
+
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select{
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    height:36px !important;
+    min-height:36px !important;
+    padding:.2rem .65rem !important;
+    font-size:.92rem !important;
+    border-radius:4px !important;
+  }
+  .rwd-table td:nth-child(7),
+  .rwd-table td:nth-child(8),
+  .rwd-table td:nth-child(9){
+    text-align:center !important;
+  }
+  .rwd-table .del .btn{
+    min-width:52px !important;
+    height:30px !important;
+    min-height:30px !important;
+    padding:.1rem .45rem !important;
+    margin:0 auto !important;
+    display:inline-flex !important;
+  }
+}
+@media (max-width: 420px){
+  .rwd-wrap{overflow-x:auto !important;}
+  .rwd-table{min-width:1080px !important;}
+  .rwd-table thead{display:table-header-group !important;}
+  .rwd-table tbody{display:table-row-group !important;}
+  .rwd-table tr{display:table-row !important;}
+  .rwd-table th,
+  .rwd-table td{display:table-cell !important;}
+}
+</style>
+
 </head>
 <body class="min-h-full bg-slate-50">
   <!-- Tailwind dynamic class preflight (hidden element to ensure JIT includes classes used via JS) -->
