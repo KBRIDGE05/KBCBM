@@ -11,47 +11,87 @@
   <link rel="stylesheet" href="https://cdn.tradlinx.com/fonts/pretendard/pretendard-dynamic-subset.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+
 :root{
-  --bg:#f6f7fb;
+  --bg:#f6f8fb;
   --card:#ffffff;
-  --text:#0f172a;
-  --muted:#64748b;
-  --border:#e5e7eb;
-  --primary:#6d28d9;
-  --primary-600:#5b21b6;
-  --ring:#a78bfa;
+  --text:#162033;
+  --muted:#667085;
+  --border:#e5ebf2;
+  --border-strong:#d8e1ec;
+  --primary:#2a5caa;
+  --primary-600:#214e95;
+  --ring:rgba(42,92,170,.14);
+  --soft:#f3f7fc;
 }
-body{background:var(--bg);color:var(--text);}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 24px rgba(16,24,40,.06);}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:12px;border:1px solid transparent;background:linear-gradient(90deg,var(--primary),var(--primary-600));color:#fff;font-weight:700;letter-spacing:.01em;box-shadow:0 6px 20px rgba(109,40,217,.25);cursor:pointer; transition:all .15s ease;}
-.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(109,40,217,.35);} .btn:active{transform:translateY(0);}
-.btn-ghost{background:transparent;color:var(--primary-600);border:1px solid #ead7ff;box-shadow:none;}
-.btn-ghost:hover{background:rgba(167,139,250,.12);}
-.input,.select{width:100%;max-width:8rem;appearance:none;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.45rem .6rem;font-variant-numeric:tabular-nums;box-shadow:0 1px 0 rgba(16,24,40,.02);transition:border-color .15s ease, box-shadow .15s ease;}
-.input:focus,.select:focus{outline:none;border-color:var(--ring);box-shadow:0 0 0 4px rgba(167,139,250,.15);}
-.badge{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .6rem;border-radius:9999px;border:1px solid #e9d5ff;background:#f5f3ff;color:#4c1d95;font-weight:700;font-size:.75rem;}
+body{background:linear-gradient(180deg,#f7f9fc 0%,#f4f7fb 100%);color:var(--text);font-family:Pretendard,system-ui,sans-serif;letter-spacing:-0.01em;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:0 14px 34px rgba(17,24,39,.04);}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem .72rem;border-radius:12px;border:1px solid transparent;background:linear-gradient(180deg,var(--primary) 0%,var(--primary-600) 100%);color:#fff;font-weight:600;font-size:.78rem;letter-spacing:-.01em;box-shadow:0 8px 18px rgba(33,78,149,.16);cursor:pointer;transition:all .15s ease;}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(33,78,149,.2);} .btn:active{transform:translateY(0);}
+.btn-ghost{background:#f8fbff;color:var(--primary-600);border:1px solid #dbe6f3;box-shadow:none;}
+.btn-ghost:hover{background:#f1f6fc;}
+.input,.select{width:100%;max-width:5.4rem;appearance:none;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.34rem .48rem;font-size:.76rem;font-variant-numeric:tabular-nums;box-shadow:none;transition:border-color .15s ease, box-shadow .15s ease;}
+.input:focus,.select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px var(--ring);}
+.badge{display:inline-flex;align-items:center;gap:.35rem;padding:.14rem .48rem;border-radius:9999px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:.65rem;backdrop-filter:blur(8px);}
 .rwd-wrap{overflow:auto;border:1px solid var(--border);border-radius:16px;background:var(--card);}
+.rwd-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;}
+.rwd-table thead th{position:sticky;top:0;z-index:5;background:#f8fafc;color:#5b6678;font-weight:600;font-size:.72rem;border-bottom:1px solid var(--border-strong);white-space:nowrap;}
+.rwd-table tbody tr{transition:background .12s ease;} .rwd-table tbody tr:hover{background:#fbfdff;}
+.rwd-table tbody td{border-bottom:1px solid #edf2f7;font-size:.76rem;color:#253047;}
+.rwd-table .del .btn{background:#fbfcfe;border:1px solid #e4eaf2;color:#637083;box-shadow:none;font-weight:500;} .rwd-table .del .btn:hover{background:#f3f6fa;}
+.gradient-card{background:linear-gradient(135deg,#1e2f4d 0%,#25456f 55%,#2f6bb2 100%);color:#fff;border:0;position:relative;padding-bottom:56px;box-shadow:0 18px 40px rgba(16,24,40,.12);}
+.gradient-card .text-slate-600, .gradient-card .text-slate-500{color:rgba(255,255,255,.84)!important;}
+.gradient-card .badge{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;}
+.gradient-card .btn-ghost{color:#fff;border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.08);} .gradient-card .btn-ghost:hover{background:rgba(255,255,255,.14);}
+.summary-card{padding:.95rem 1rem !important;}
+.summary-label{font-size:.68rem;color:#67758b;font-weight:600;letter-spacing:.02em;text-transform:uppercase;}
+.summary-value{margin-top:.18rem;font-size:1.35rem;line-height:1.15;font-weight:700;letter-spacing:-.03em;color:#162033;}
+.spec-table thead th{font-size:.72rem;color:#5b6678;font-weight:600;background:#f8fafc;}
+.spec-table tbody td{font-size:.76rem;color:#223047;}
+:root{
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#dbe2ea;
+  --border-strong:#c7d2e0;
+  --primary:#1f4f8f;
+  --primary-600:#173d71;
+  --primary-700:#12325c;
+  --ring:rgba(31,79,143,.18);
+  --soft:#eef4fb;
+}
+body{background:linear-gradient(180deg,#f7f9fc 0%,#f2f5f9 100%);color:var(--text);font-family:Pretendard,system-ui,sans-serif;letter-spacing:-0.01em;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(15,23,42,.05);}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:12px;border:1px solid transparent;background:linear-gradient(180deg,var(--primary) 0%,var(--primary-600) 100%);color:#fff;font-weight:600;font-size:.875rem;letter-spacing:-.01em;box-shadow:0 8px 18px rgba(23,61,113,.18);cursor:pointer;transition:all .15s ease;}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(23,61,113,.22);} .btn:active{transform:translateY(0);}
+.btn-ghost{background:#f8fbff;color:var(--primary-600);border:1px solid #d6e3f2;box-shadow:none;}
+.btn-ghost:hover{background:#eef4fb;}
+.input,.select{width:100%;max-width:6.2rem;appearance:none;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.38rem .52rem;font-size:.82rem;font-variant-numeric:tabular-nums;box-shadow:0 1px 0 rgba(16,24,40,.02);transition:border-color .15s ease, box-shadow .15s ease;}
+.input:focus,.select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px var(--ring);}
+.badge{display:inline-flex;align-items:center;gap:.35rem;padding:.16rem .52rem;border-radius:9999px;border:1px solid #d8e3f0;background:rgba(255,255,255,.12);color:#fff;font-weight:600;font-size:.68rem;backdrop-filter:blur(10px);}
+.rwd-wrap{overflow:auto;border:1px solid var(--border);border-radius:16px;background:var(--card);box-shadow:inset 0 1px 0 rgba(255,255,255,.65);}
 .rwd-table{width:100%;border-collapse:separate;border-spacing:0;}
-.rwd-table thead th{position:sticky;top:0;z-index:5;background:linear-gradient(0deg,#fafaff,#fff);color:#475569;font-weight:700;border-bottom:1px solid var(--border);}
-.rwd-table tbody tr{transition:background .12s ease;} .rwd-table tbody tr:hover{background:#faf5ff;}
-.rwd-table tbody td{border-bottom:1px solid var(--border);}
+.rwd-table thead th{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,#fbfcfe 0%,#f5f8fc 100%);color:#516070;font-weight:600;font-size:.78rem;border-bottom:1px solid var(--border-strong);}
+.rwd-table tbody tr{transition:background .12s ease;} .rwd-table tbody tr:hover{background:#f8fbff;}
+.rwd-table tbody td{border-bottom:1px solid #e8eef5;font-size:.82rem;}
 .rwd-table .del .btn{background:#fee2e2;border:1px solid #fecaca;color:#b91c1c;box-shadow:none;font-weight:700;} .rwd-table .del .btn:hover{background:#fecaca;}
-.gradient-card{background: radial-gradient(1200px 300px at 10% -10%, rgba(255,255,255,.15) 0%, rgba(255,255,255,0) 30%), linear-gradient(135deg, #6d28d9 0%, #4f46e5 55%, #22c55e 120%);color:#fff;border:0; position: relative; padding-bottom: 64px;}
+.gradient-card{background:radial-gradient(800px 220px at 0% 0%,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 45%),linear-gradient(135deg,#1d3557 0%,#264d7c 48%,#3c6ea8 100%);color:#fff;border:0;position:relative;padding-bottom:58px;box-shadow:0 18px 40px rgba(29,53,87,.18);}
 .gradient-card .text-slate-600, .gradient-card .text-slate-500{color:rgba(255,255,255,.85)!important;}
-.gradient-card .badge{border-color:rgba(255,255,255,.55); background:rgba(255,255,255,.12); color:#fff;}
-.gradient-card .btn-ghost{color:#fff;border-color:rgba(255,255,255,.35);} .gradient-card .btn-ghost:hover{background:rgba(255,255,255,.12);}
+.gradient-card .badge{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.10);color:#fff;}
+.gradient-card .btn-ghost{color:#fff;border-color:rgba(255,255,255,.20);background:rgba(255,255,255,.06);} .gradient-card .btn-ghost:hover{background:rgba(255,255,255,.12);}
 @media (min-width:280px){ .rwd-table thead th, .rwd-table tbody td { padding:.5rem .75rem; } }
     /* Compact first six input columns + alignment */
     @media (min-width:280px) {
       .rwd-table { table-layout: fixed; }
-      .rwd-table th:nth-child(1), .rwd-table td:nth-child(1) { width: 7rem; }
-      .rwd-table th:nth-child(2), .rwd-table td:nth-child(2) { width: 7rem; }
-      .rwd-table th:nth-child(3), .rwd-table td:nth-child(3) { width: 7rem; }
-      .rwd-table th:nth-child(4), .rwd-table td:nth-child(4) { width: 6rem; }
-      .rwd-table th:nth-child(5), .rwd-table td:nth-child(5) { width: 7rem; }
-      .rwd-table th:nth-child(6), .rwd-table td:nth-child(6) { width: 6rem; }
-      .rwd-table td:nth-child(-n+6) .input { max-width: 6.25rem; }
-      .rwd-table td:nth-child(4) .select { max-width: 5.75rem; }
+      .rwd-table th:nth-child(1), .rwd-table td:nth-child(1) { width: 5.8rem; }
+      .rwd-table th:nth-child(2), .rwd-table td:nth-child(2) { width: 5.8rem; }
+      .rwd-table th:nth-child(3), .rwd-table td:nth-child(3) { width: 5.8rem; }
+      .rwd-table th:nth-child(4), .rwd-table td:nth-child(4) { width: 4.8rem; }
+      .rwd-table th:nth-child(5), .rwd-table td:nth-child(5) { width: 5.4rem; }
+      .rwd-table th:nth-child(6), .rwd-table td:nth-child(6) { width: 4.8rem; }
+      .rwd-table td:nth-child(-n+6) .input { max-width: 5.2rem; }
+      .rwd-table td:nth-child(4) .select { max-width: 4.8rem; }
       .rwd-table th:nth-child(-n+6), .rwd-table td:nth-child(-n+6) { text-align: center; }
       .rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
       .rwd-table th:nth-child(8), .rwd-table td:nth-child(8) { text-align: right; }
@@ -61,7 +101,7 @@ body{background:var(--bg);color:var(--text);}
     .spec-table th, .spec-table td { text-align: center !important; }
   
 /* kbridge-logo-position */
-.gradient-card{position:relative;min-height:110px;}
+.gradient-card{position:relative;min-height:108px;}
 
 .air-rule-toolbar{ position:absolute; right:16px; bottom:12px; }
 
@@ -88,7 +128,7 @@ body{background:var(--bg);color:var(--text);}
 <style id="mobile-optimizations">
 /* === Mobile Size Optimizations (non-destructive) === */
 /* Fluid base type scale for small screens */
-html { font-size: clamp(14px, 3.2vw, 16px); }
+html { font-size: clamp(13px, 2.4vw, 15px); }
 
 @media (max-width: 640px){
   main { padding: 1rem !important; }
@@ -205,24 +245,1795 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
   }
 }
 </style>
+
+<style id="readability-upgrade">
+:root{
+  --bg:#f3f6fb;
+  --card:#ffffff;
+  --card-2:#f8fbff;
+  --text:#0b1220;
+  --muted:#526075;
+  --muted-2:#6b7a90;
+  --border:#d8e1ee;
+  --border-strong:#bfd0ea;
+  --primary:#1d4ed8;
+  --primary-600:#1e40af;
+  --primary-700:#1d3f91;
+  --primary-soft:#eaf2ff;
+  --ring:rgba(29,78,216,.18);
+  --shadow:0 14px 34px rgba(15,23,42,.07);
+}
+html{font-size:16px;}
+body{
+  background:
+    radial-gradient(circle at top left, rgba(59,130,246,.08), transparent 32%),
+    linear-gradient(180deg, #f7faff 0%, #f3f6fb 100%);
+  color:var(--text);
+  font-family:'Pretendard',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.55;
+}
+main{max-width:1280px !important;}
+.card{
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+}
+.gradient-card{
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255,255,255,.16), transparent 30%),
+    linear-gradient(135deg, #153b8a 0%, #1d4ed8 48%, #3b82f6 100%);
+  border-radius:28px;
+  box-shadow:0 18px 40px rgba(29,78,216,.22);
+  padding:2rem 2rem 4.75rem !important;
+}
+header h1{
+  font-size:2rem !important;
+  letter-spacing:-0.03em;
+}
+.header-subline{
+  color:rgba(255,255,255,.9) !important;
+  font-size:1rem !important;
+  line-height:1.7 !important;
+  max-width:760px;
+}
+.badge{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.32);
+  color:#fff;
+  font-size:.76rem;
+  padding:.35rem .7rem;
+}
+.air-rule-toolbar label{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  padding:.35rem .65rem;
+}
+section h2{
+  color:#0f172a;
+  letter-spacing:-0.02em;
+}
+.btn{
+  min-height:42px;
+  padding:.72rem 1rem;
+  border-radius:14px;
+  font-size:.94rem;
+  background:linear-gradient(180deg,var(--primary),var(--primary-600));
+  box-shadow:0 10px 22px rgba(29,78,216,.18);
+}
+.btn-ghost{
+  background:var(--primary-soft);
+  color:var(--primary-700);
+  border:1px solid #cfe0ff;
+}
+.btn-ghost:hover{background:#dfeaff;}
+.rwd-wrap{
+  border:1px solid var(--border-strong);
+  border-radius:18px;
+  overflow:auto;
+}
+.rwd-table{
+  min-width:980px;
+  background:#fff;
+}
+.rwd-table thead th{
+  background:#f7faff;
+  color:#334155;
+  font-size:.87rem;
+  padding:.95rem .85rem !important;
+  white-space:nowrap;
+}
+.rwd-table tbody td{
+  padding:.85rem .85rem !important;
+  vertical-align:middle;
+}
+.rwd-table tbody tr:nth-child(even){background:#fbfdff;}
+.rwd-table tbody tr:hover{background:#eef5ff;}
+.input,.select{
+  max-width:none;
+  min-height:42px;
+  border-radius:12px;
+  border:1px solid var(--border-strong);
+  padding:.62rem .75rem;
+  font-size:.95rem;
+  color:#0f172a;
+  background:#fff;
+}
+.input::placeholder{color:#94a3b8;}
+.input:focus,.select:focus{
+  border-color:#60a5fa;
+  box-shadow:0 0 0 4px var(--ring);
+}
+.text-slate-500{color:var(--muted-2) !important;}
+.text-slate-600{color:var(--muted) !important;}
+#totalCbm,#totalWeight,#airVol,#seaWm{
+  font-size:2rem !important;
+  letter-spacing:-0.04em;
+}
+section.mt-6.grid .card{
+  background:linear-gradient(180deg,#ffffff 0%, #f9fbff 100%);
+}
+#containerCards > div{
+  border-radius:20px !important;
+  border:1px solid var(--border) !important;
+  box-shadow:0 8px 20px rgba(15,23,42,.05);
+}
+#containerCards .bg-slate-100{background:#eaf0f8 !important;}
+.spec-table thead{
+  background:#f7faff;
+}
+.spec-table thead th{
+  color:#334155;
+  font-size:.86rem;
+  padding:.9rem .75rem;
+}
+.spec-table td{
+  padding:.95rem .75rem !important;
+  border-bottom:1px solid #e8eef7;
+}
+.spec-table tbody tr:nth-child(even){background:#fbfdff;}
+footer{padding-bottom:1rem;}
+@media (max-width: 1024px){
+  main{padding:1rem !important;}
+  .gradient-card{padding:1.5rem 1.25rem 1.25rem !important; min-height:auto !important;}
+  .header-subline,.air-rule-toolbar{position:static !important;}
+  .air-rule-toolbar{margin-top:.75rem; flex-wrap:wrap;}
+}
+@media (max-width: 640px){
+  html{font-size:15px;}
+  header h1{font-size:1.55rem !important;}
+  .card{border-radius:18px;}
+  .rwd-table{min-width:860px;}
+  .btn{min-height:40px; padding:.65rem .85rem;}
+  section.card > .mb-3.flex{gap:.75rem !important;}
+  .input,.select{min-height:40px; font-size:.92rem;}
+  #totalCbm,#totalWeight,#airVol,#seaWm{font-size:1.65rem !important;}
+}
+</style>
+
+
+<style>
+.summary-card{position:relative;overflow:hidden;}
+.summary-card:before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,#dce7f3 0%,#7fa4cf 100%);opacity:.9;}
+.summary-label{font-size:11px;color:#6b7280;letter-spacing:.01em;}
+.summary-value{font-size:1.35rem;font-weight:600;letter-spacing:-.02em;color:#0f172a;}
+.spec-table thead th,.spec-table tbody td{padding:.72rem .4rem;}
+.spec-table tbody tr{border-bottom:1px solid #e8eef5;}
+.spec-table tbody tr:last-child{border-bottom:0;}
+</style>
+
+<style id="spacing-and-summary-upgrade">
+/* ===== 2026-04 usability upgrade ===== */
+main{max-width:1320px !important;}
+
+/* 1) 화물 정보 입력 테이블: 입력 공간 확대 */
+.rwd-wrap{
+  border:1px solid #cfdced !important;
+  border-radius:22px !important;
+  background:linear-gradient(180deg,#fdfefe 0%,#fbfdff 100%);
+}
+.rwd-table{
+  min-width:1160px !important;
+  table-layout:fixed;
+}
+.rwd-table thead th{
+  font-size:.84rem !important;
+  color:#2f3f56 !important;
+  padding:1rem .95rem !important;
+  border-bottom:1px solid #d5dfeb !important;
+}
+.rwd-table thead th span{
+  display:block;
+  margin-top:.28rem;
+  font-size:.71rem !important;
+  color:#8b9ab0 !important;
+  letter-spacing:0;
+}
+.rwd-table tbody td{
+  padding:1.05rem .95rem !important;
+  font-size:.85rem !important;
+  color:#1f2937 !important;
+}
+.rwd-table th:nth-child(1), .rwd-table td:nth-child(1),
+.rwd-table th:nth-child(2), .rwd-table td:nth-child(2),
+.rwd-table th:nth-child(3), .rwd-table td:nth-child(3){ width:7.35rem !important; }
+.rwd-table th:nth-child(4), .rwd-table td:nth-child(4){ width:6rem !important; }
+.rwd-table th:nth-child(5), .rwd-table td:nth-child(5){ width:6.8rem !important; }
+.rwd-table th:nth-child(6), .rwd-table td:nth-child(6){ width:5.7rem !important; }
+.rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
+.rwd-table th:nth-child(8), .rwd-table td:nth-child(8){ width:8.25rem !important; }
+.rwd-table th:nth-child(9), .rwd-table td:nth-child(9){ width:6.6rem !important; }
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  width:100% !important;
+  min-width:100% !important;
+  max-width:100% !important;
+  min-height:54px !important;
+  padding:.8rem .9rem !important;
+  border-radius:16px !important;
+  border:1.5px solid #c8d7ea !important;
+  background:#ffffff !important;
+  font-size:1rem !important;
+  font-weight:500;
+  color:#0f172a !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+}
+.rwd-table td:nth-child(-n+6) .input::placeholder{color:#9aa9bc !important;}
+.rwd-table td:nth-child(-n+6) .input:focus,
+.rwd-table td:nth-child(-n+6) .select:focus{
+  border-color:#4a7bcb !important;
+  box-shadow:0 0 0 4px rgba(59,130,246,.14) !important;
+}
+.rwd-table td:nth-child(7),
+.rwd-table td:nth-child(8){
+  font-size:.95rem !important;
+  font-weight:700;
+  color:#173f71 !important;
+}
+.rwd-table .del .btn{
+  width:100%;
+  min-height:54px;
+  border-radius:16px;
+  font-size:.95rem;
+  font-weight:700;
+  background:linear-gradient(180deg,#fff5f5 0%,#feecec 100%) !important;
+  border:1px solid #f6c5c5 !important;
+  color:#b43a3a !important;
+}
+.rwd-table .del .btn:hover{background:#fde7e7 !important;}
+
+/* 섹션 제목도 조금 더 또렷하게 */
+.summary-head h2,
+section.card h2{
+  color:#0b1220;
+}
+.summary-head p,
+section.card > p.text-\[11px\],
+section.card .text-\[12px\]{
+  color:#64748b !important;
+}
+
+/* 2) 계산 요약: 더 눈에 띄는 프리미엄 카드 */
+.summary-grid{
+  gap:1rem !important;
+}
+.summary-grid .summary-card{
+  position:relative;
+  overflow:hidden;
+  padding:1.15rem 1.15rem 1.05rem !important;
+  border:1px solid #d7e2f0 !important;
+  border-radius:22px !important;
+  background:
+    radial-gradient(circle at top right, rgba(59,130,246,.09), transparent 34%),
+    linear-gradient(180deg,#ffffff 0%,#f7faff 100%) !important;
+  box-shadow:0 18px 36px rgba(15,23,42,.08) !important;
+}
+.summary-grid .summary-card::before{
+  content:"";
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:4px;
+  background:linear-gradient(90deg,#1d4ed8 0%, #60a5fa 100%);
+}
+.summary-grid .summary-card:nth-child(2)::before{background:linear-gradient(90deg,#0f766e 0%, #2dd4bf 100%);}
+.summary-grid .summary-card:nth-child(3)::before{background:linear-gradient(90deg,#7c3aed 0%, #a78bfa 100%);}
+.summary-grid .summary-card:nth-child(4)::before{background:linear-gradient(90deg,#c2410c 0%, #fb923c 100%);}
+.summary-grid .summary-card .summary-label{
+  font-size:.76rem !important;
+  font-weight:800 !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase;
+  color:#475569 !important;
+  margin-bottom:.45rem;
+}
+.summary-grid .summary-card .summary-value,
+.summary-grid .summary-card #totalCbm,
+.summary-grid .summary-card #totalWeight,
+.summary-grid .summary-card #airVol,
+.summary-grid .summary-card #seaWm{
+  font-size:2.1rem !important;
+  line-height:1.05 !important;
+  font-weight:800 !important;
+  letter-spacing:-.05em !important;
+  color:#0b1220 !important;
+}
+#totalCbm{color:#173f95 !important;}
+#totalWeight{color:#0f766e !important;}
+#airVol{color:#6d28d9 !important;}
+#seaWm{color:#c2410c !important;}
+.summary-grid .summary-card p:last-child{
+  margin-top:.4rem;
+  font-size:.8rem !important;
+  line-height:1.45;
+  color:#607086 !important;
+}
+.summary-grid .summary-card span{
+  font-weight:700;
+  color:#233247;
+}
+
+/* 모바일에서도 입력칸이 너무 답답하지 않도록 조정 */
+@media (max-width: 640px){
+  .rwd-table{min-width:1080px !important;}
+  .rwd-table thead th{font-size:.82rem !important;}
+  .rwd-table tbody td{padding:.9rem .8rem !important;}
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select{
+    min-height:50px !important;
+    font-size:.96rem !important;
+  }
+  .summary-grid .summary-card .summary-value,
+  .summary-grid .summary-card #totalCbm,
+  .summary-grid .summary-card #totalWeight,
+  .summary-grid .summary-card #airVol,
+  .summary-grid .summary-card #seaWm{
+    font-size:1.8rem !important;
+  }
+}
+</style>
+
+
+<style id="corporate-minimal-theme">
+:root{
+  --bg:#f5f7fa;
+  --card:#ffffff;
+  --card-soft:#fafbfd;
+  --text:#111827;
+  --muted:#667085;
+  --muted-2:#8a94a6;
+  --border:#dde3ea;
+  --border-strong:#cfd8e3;
+  --primary:#1f3b63;
+  --primary-600:#18314f;
+  --primary-soft:#eef3f8;
+  --shadow:0 8px 24px rgba(15,23,42,.05);
+}
+
+/* base */
+body{
+  background:#f5f7fa !important;
+  color:var(--text) !important;
+}
+main{max-width:1280px !important; padding-top:1.5rem !important; padding-bottom:2rem !important;}
+.card{
+  background:var(--card) !important;
+  border:1px solid var(--border) !important;
+  border-radius:18px !important;
+  box-shadow:var(--shadow) !important;
+}
+
+/* hero */
+.gradient-card{
+  background:#ffffff !important;
+  color:var(--text) !important;
+  border:1px solid var(--border) !important;
+  border-radius:20px !important;
+  box-shadow:var(--shadow) !important;
+  padding:1.5rem 1.5rem 1.35rem !important;
+}
+header h1{
+  color:#0f172a !important;
+  font-size:1.6rem !important;
+  font-weight:700 !important;
+  letter-spacing:-.03em !important;
+}
+.header-subline{
+  position:static !important;
+  margin-top:.45rem !important;
+  color:var(--muted) !important;
+  font-size:.92rem !important;
+  line-height:1.6 !important;
+  max-width:780px !important;
+}
+.air-rule-toolbar{
+  position:static !important;
+  margin-top:.9rem !important;
+  gap:.55rem !important;
+  flex-wrap:wrap !important;
+  color:var(--muted) !important;
+}
+.badge{
+  background:var(--primary-soft) !important;
+  color:var(--primary) !important;
+  border:1px solid #d7e1ec !important;
+  font-size:.72rem !important;
+  font-weight:700 !important;
+}
+.air-rule-toolbar label{
+  background:#fff !important;
+  color:#475467 !important;
+  border:1px solid var(--border) !important;
+  border-radius:999px !important;
+  padding:.38rem .72rem !important;
+}
+
+/* section headings */
+section h2{
+  color:#101828 !important;
+  font-size:1.02rem !important;
+  font-weight:700 !important;
+}
+.summary-head h2{font-size:1.02rem !important;}
+.summary-head p,
+section.card .text-\[12px\],
+section.card > p.text-\[11px\]{
+  color:var(--muted) !important;
+}
+
+/* buttons */
+.btn{
+  min-height:40px !important;
+  padding:.62rem .92rem !important;
+  border-radius:12px !important;
+  background:var(--primary) !important;
+  border:1px solid var(--primary) !important;
+  color:#fff !important;
+  font-size:.88rem !important;
+  font-weight:600 !important;
+  box-shadow:none !important;
+}
+.btn:hover{background:var(--primary-600) !important;}
+.btn-ghost{
+  background:#fff !important;
+  color:var(--primary) !important;
+  border:1px solid var(--border-strong) !important;
+}
+.btn-ghost:hover{background:#f8fafc !important;}
+
+/* table */
+.rwd-wrap{
+  border:1px solid var(--border) !important;
+  border-radius:16px !important;
+  background:#fff !important;
+}
+.rwd-table{
+  min-width:1120px !important;
+  background:#fff !important;
+}
+.rwd-table thead th{
+  background:#f8fafc !important;
+  color:#344054 !important;
+  font-size:.8rem !important;
+  font-weight:700 !important;
+  padding:.95rem .9rem !important;
+  border-bottom:1px solid var(--border) !important;
+}
+.rwd-table thead th span{
+  color:#98a2b3 !important;
+  font-size:.7rem !important;
+}
+.rwd-table tbody tr:nth-child(even){background:#fcfcfd !important;}
+.rwd-table tbody tr:hover{background:#f8fafc !important;}
+.rwd-table tbody td{
+  padding:.9rem .9rem !important;
+  color:#1f2937 !important;
+  font-size:.84rem !important;
+  border-bottom:1px solid #edf1f5 !important;
+}
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  min-height:48px !important;
+  border-radius:12px !important;
+  border:1px solid var(--border-strong) !important;
+  background:#fff !important;
+  box-shadow:none !important;
+  color:#111827 !important;
+  font-size:.95rem !important;
+  font-weight:500 !important;
+}
+.rwd-table td:nth-child(-n+6) .input:focus,
+.rwd-table td:nth-child(-n+6) .select:focus{
+  border-color:#98a2b3 !important;
+  box-shadow:0 0 0 3px rgba(152,162,179,.14) !important;
+}
+.rwd-table td:nth-child(7),
+.rwd-table td:nth-child(8){
+  color:#1f3b63 !important;
+  font-weight:700 !important;
+}
+.rwd-table .del .btn{
+  background:#fff !important;
+  color:#b42318 !important;
+  border:1px solid #f0c7c2 !important;
+  min-height:48px !important;
+  border-radius:12px !important;
+}
+
+/* summary cards */
+.summary-grid .summary-card{
+  background:#fff !important;
+  border:1px solid var(--border) !important;
+  border-radius:18px !important;
+  box-shadow:var(--shadow) !important;
+  padding:1rem 1rem .95rem !important;
+}
+.summary-grid .summary-card::before{
+  height:1px !important;
+  background:#dfe6ee !important;
+}
+.summary-grid .summary-card:nth-child(2)::before,
+.summary-grid .summary-card:nth-child(3)::before,
+.summary-grid .summary-card:nth-child(4)::before{
+  background:#dfe6ee !important;
+}
+.summary-grid .summary-card .summary-label{
+  color:#667085 !important;
+  font-size:.74rem !important;
+  font-weight:700 !important;
+  letter-spacing:.06em !important;
+  margin-bottom:.35rem !important;
+}
+.summary-grid .summary-card .summary-value,
+.summary-grid .summary-card #totalCbm,
+.summary-grid .summary-card #totalWeight,
+.summary-grid .summary-card #airVol,
+.summary-grid .summary-card #seaWm{
+  font-size:1.85rem !important;
+  font-weight:800 !important;
+  color:#101828 !important;
+  letter-spacing:-.04em !important;
+}
+#totalCbm,#totalWeight,#airVol,#seaWm{color:#101828 !important;}
+.summary-grid .summary-card p:last-child{
+  color:#667085 !important;
+  font-size:.78rem !important;
+}
+.summary-grid .summary-card span{color:#344054 !important;}
+
+/* utilization/spec cards */
+#containerCards > div{
+  background:#fff !important;
+  border:1px solid var(--border) !important;
+  border-radius:18px !important;
+  box-shadow:none !important;
+}
+#containerCards .bg-slate-100{background:#e8edf3 !important;}
+.spec-table thead{
+  background:#f8fafc !important;
+}
+.spec-table thead th{
+  color:#344054 !important;
+  font-size:.8rem !important;
+  font-weight:700 !important;
+}
+.spec-table td{
+  color:#1f2937 !important;
+  font-size:.82rem !important;
+  padding:.85rem .7rem !important;
+  border-bottom:1px solid #edf1f5 !important;
+}
+.spec-table tbody tr:nth-child(even){background:#fcfcfd !important;}
+
+footer{color:#98a2b3 !important;}
+
+/* responsive */
+@media (max-width: 1024px){
+  .gradient-card{padding:1.25rem !important;}
+}
+@media (max-width: 640px){
+  html{font-size:15px !important;}
+  header h1{font-size:1.4rem !important;}
+  .rwd-table{min-width:1040px !important;}
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select,
+  .rwd-table .del .btn{
+    min-height:46px !important;
+  }
+  .summary-grid .summary-card .summary-value,
+  .summary-grid .summary-card #totalCbm,
+  .summary-grid .summary-card #totalWeight,
+  .summary-grid .summary-card #airVol,
+  .summary-grid .summary-card #seaWm{
+    font-size:1.65rem !important;
+  }
+}
+</style>
+
+
+<style id="b2b-saas-refine-v3">
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --card-soft:#f8fbff;
+  --text:#0f172a;
+  --muted:#667085;
+  --muted-2:#98a2b3;
+  --border:#d9e2ec;
+  --border-strong:#c9d5e3;
+  --primary:#2457c5;
+  --primary-600:#1f4aa7;
+  --primary-700:#173a82;
+  --primary-soft:#eef4ff;
+  --shadow-sm:0 8px 20px rgba(15,23,42,.04);
+  --shadow-md:0 16px 36px rgba(15,23,42,.06);
+}
+body{
+  background:
+    radial-gradient(circle at top left, rgba(36,87,197,.06), transparent 24%),
+    linear-gradient(180deg,#f8fbff 0%, #f4f7fb 100%) !important;
+  color:var(--text) !important;
+}
+main{max-width:1320px !important;}
+.card{
+  border:1px solid var(--border) !important;
+  border-radius:20px !important;
+  box-shadow:var(--shadow-sm) !important;
+}
+
+/* Top area: more premium SaaS */
+.gradient-card{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(247,250,255,.96) 100%),
+    #fff !important;
+  border:1px solid #dbe5f0 !important;
+  box-shadow:var(--shadow-md) !important;
+  border-radius:22px !important;
+  padding:1.45rem 1.55rem 1.25rem !important;
+}
+.gradient-card::after{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:4px;
+  border-radius:22px 0 0 22px;
+  background:linear-gradient(180deg,#7aa2ff 0%, #2457c5 100%);
+}
+header h1{
+  font-size:1.65rem !important;
+  font-weight:800 !important;
+  letter-spacing:-.035em !important;
+  color:#0f172a !important;
+}
+.header-subline{
+  color:#5f6b7c !important;
+  font-size:.92rem !important;
+  line-height:1.62 !important;
+}
+.badge{
+  background:#edf4ff !important;
+  color:#2457c5 !important;
+  border:1px solid #d5e4ff !important;
+}
+.air-rule-toolbar label{
+  background:#fff !important;
+  border:1px solid #d8e2ee !important;
+  color:#475467 !important;
+  box-shadow:none !important;
+}
+
+/* Section header */
+section h2{font-size:1.03rem !important;font-weight:800 !important;letter-spacing:-.02em !important;}
+.summary-head h2{font-size:1.05rem !important;}
+
+/* Buttons */
+.btn{
+  min-height:38px !important;
+  padding:.58rem .9rem !important;
+  border-radius:12px !important;
+  background:linear-gradient(180deg,var(--primary) 0%, var(--primary-600) 100%) !important;
+  border:1px solid var(--primary) !important;
+  box-shadow:0 8px 18px rgba(36,87,197,.14) !important;
+  font-size:.86rem !important;
+  font-weight:700 !important;
+}
+.btn:hover{background:linear-gradient(180deg,var(--primary-600) 0%, var(--primary-700) 100%) !important;}
+.btn-ghost{
+  background:#fff !important;
+  color:#23446e !important;
+  border:1px solid #d7e1ec !important;
+  box-shadow:none !important;
+}
+.btn-ghost:hover{background:#f8fafc !important;}
+
+/* Cargo input card emphasis */
+section.card.p-4.md\:p-5{
+  background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%) !important;
+}
+.rwd-wrap{
+  border:1px solid #d4deea !important;
+  border-radius:18px !important;
+  background:#fff !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+}
+.rwd-table{
+  min-width:1210px !important;
+  table-layout:fixed !important;
+  background:#fff !important;
+}
+.rwd-table thead th{
+  background:linear-gradient(180deg,#fbfcfe 0%, #f7f9fc 100%) !important;
+  color:#344054 !important;
+  font-size:.79rem !important;
+  font-weight:800 !important;
+  padding:.9rem .95rem !important;
+  border-bottom:1px solid #dce5ef !important;
+}
+.rwd-table thead th span{
+  font-size:.68rem !important;
+  color:#98a2b3 !important;
+  margin-top:.18rem !important;
+}
+.rwd-table tbody tr:nth-child(even){background:#fcfdff !important;}
+.rwd-table tbody tr:hover{background:#f7faff !important;}
+.rwd-table tbody td{
+  padding:.75rem .9rem !important;
+  border-bottom:1px solid #edf2f7 !important;
+  font-size:.84rem !important;
+  vertical-align:middle !important;
+}
+/* Wider first columns so inputs feel longer */
+.rwd-table th:nth-child(1), .rwd-table td:nth-child(1),
+.rwd-table th:nth-child(2), .rwd-table td:nth-child(2),
+.rwd-table th:nth-child(3), .rwd-table td:nth-child(3){ width:8.1rem !important; }
+.rwd-table th:nth-child(4), .rwd-table td:nth-child(4){ width:6.6rem !important; }
+.rwd-table th:nth-child(5), .rwd-table td:nth-child(5){ width:7.3rem !important; }
+.rwd-table th:nth-child(6), .rwd-table td:nth-child(6){ width:6.2rem !important; }
+.rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
+.rwd-table th:nth-child(8), .rwd-table td:nth-child(8){ width:8.6rem !important; }
+.rwd-table th:nth-child(9), .rwd-table td:nth-child(9){ width:6.1rem !important; }
+/* Sleek inputs: lower height, longer horizontal feel */
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  width:100% !important;
+  min-width:100% !important;
+  max-width:100% !important;
+  min-height:42px !important;
+  height:42px !important;
+  padding:.5rem .85rem !important;
+  border-radius:11px !important;
+  border:1px solid #cfd9e6 !important;
+  background:#fbfdff !important;
+  box-shadow:inset 0 1px 2px rgba(15,23,42,.02) !important;
+  color:#0f172a !important;
+  font-size:.94rem !important;
+  font-weight:500 !important;
+}
+.rwd-table td:nth-child(-n+6) .input::placeholder{color:#a0aec0 !important;}
+.rwd-table td:nth-child(-n+6) .input:focus,
+.rwd-table td:nth-child(-n+6) .select:focus{
+  background:#ffffff !important;
+  border-color:#7aa2ff !important;
+  box-shadow:0 0 0 4px rgba(59,130,246,.12) !important;
+}
+.rwd-table td:nth-child(7),
+.rwd-table td:nth-child(8){
+  color:#2457c5 !important;
+  font-size:.92rem !important;
+  font-weight:800 !important;
+}
+.rwd-table .del .btn{
+  min-height:42px !important;
+  height:42px !important;
+  border-radius:11px !important;
+  background:#fff !important;
+  color:#b42318 !important;
+  border:1px solid #eab9b5 !important;
+  box-shadow:none !important;
+  font-size:.86rem !important;
+}
+
+/* Summary cards: cleaner but more premium */
+.summary-grid{gap:1rem !important;}
+.summary-grid .summary-card{
+  position:relative;
+  border:1px solid #dbe4ef !important;
+  border-radius:18px !important;
+  background:
+    radial-gradient(circle at top right, rgba(36,87,197,.06), transparent 30%),
+    linear-gradient(180deg,#ffffff 0%,#f9fbfe 100%) !important;
+  box-shadow:var(--shadow-sm) !important;
+  padding:1rem 1.05rem !important;
+}
+.summary-grid .summary-card::before{
+  height:3px !important;
+  background:linear-gradient(90deg,#2457c5 0%, #8ab2ff 100%) !important;
+}
+.summary-grid .summary-card .summary-label{
+  font-size:.72rem !important;
+  color:#667085 !important;
+  font-weight:800 !important;
+  letter-spacing:.08em !important;
+}
+.summary-grid .summary-card .summary-value,
+.summary-grid .summary-card #totalCbm,
+.summary-grid .summary-card #totalWeight,
+.summary-grid .summary-card #airVol,
+.summary-grid .summary-card #seaWm{
+  font-size:1.95rem !important;
+  font-weight:800 !important;
+  letter-spacing:-.05em !important;
+  color:#0f172a !important;
+}
+#totalCbm{color:#2457c5 !important;}
+#totalWeight{color:#0f766e !important;}
+#airVol{color:#5b3cc4 !important;}
+#seaWm{color:#c2410c !important;}
+.summary-grid .summary-card p:last-child{font-size:.78rem !important;color:#667085 !important;}
+.summary-grid .summary-card span{color:#344054 !important;}
+
+/* Utilization/spec sections refined */
+#containerCards > div{
+  border:1px solid #dbe4ef !important;
+  border-radius:18px !important;
+  background:linear-gradient(180deg,#fff 0%, #fbfdff 100%) !important;
+}
+#containerCards .bg-slate-100{background:#e8eef6 !important;}
+.spec-table thead{background:#f8fafc !important;}
+.spec-table thead th{font-size:.79rem !important;font-weight:800 !important;color:#344054 !important;}
+.spec-table td{font-size:.81rem !important;color:#1f2937 !important;}
+.spec-table tbody tr:nth-child(even){background:#fcfdff !important;}
+
+footer{color:#98a2b3 !important;}
+
+@media (max-width: 1024px){
+  .rwd-table{min-width:1160px !important;}
+}
+@media (max-width: 640px){
+  header h1{font-size:1.45rem !important;}
+  .rwd-table{min-width:1120px !important;}
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select,
+  .rwd-table .del .btn{
+    min-height:40px !important;
+    height:40px !important;
+    font-size:.92rem !important;
+  }
+  .summary-grid .summary-card .summary-value,
+  .summary-grid .summary-card #totalCbm,
+  .summary-grid .summary-card #totalWeight,
+  .summary-grid .summary-card #airVol,
+  .summary-grid .summary-card #seaWm{
+    font-size:1.72rem !important;
+  }
+}
+</style>
+
+
+<style id="b2b-saas-color-icons-v4">
+main{max-width:1360px !important;}
+
+/* colorful but still B2B SaaS */
+.title-row{display:inline-flex;align-items:center;gap:.6rem;}
+.title-icon,.label-icon,.container-chip{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 auto;
+}
+.title-icon{
+  width:1.9rem;height:1.9rem;border-radius:12px;
+  border:1px solid transparent;
+}
+.title-icon svg,.label-icon svg,.container-chip svg{width:1rem;height:1rem;}
+.title-icon-cargo{background:#eef4ff;color:#2457c5;border-color:#d7e5ff;}
+.title-icon-summary{background:#f2edff;color:#6d28d9;border-color:#e3d7ff;}
+.title-icon-util{background:#ecfeff;color:#0f766e;border-color:#c6f1f4;}
+.title-icon-spec{background:#fff4e8;color:#c2410c;border-color:#fed7aa;}
+
+/* sleek action buttons with icons */
+.btn{display:inline-flex !important;align-items:center !important;gap:.45rem !important;}
+.btn svg{width:.95rem;height:.95rem;}
+#addRowBtn{background:linear-gradient(180deg,#eef4ff 0%,#e4edff 100%) !important;color:#2457c5 !important;border-color:#d5e4ff !important;}
+#clearAllBtn{background:linear-gradient(180deg,#f8fafc 0%,#f1f5f9 100%) !important;color:#475467 !important;border-color:#d8e2ee !important;}
+#addRowBtn:hover{background:#e5efff !important;}
+#clearAllBtn:hover{background:#eef2f6 !important;}
+
+/* cargo table sleeker and longer */
+.rwd-table{min-width:1290px !important;}
+.rwd-table thead th{padding:.82rem .95rem !important;}
+.rwd-table tbody td{padding:.62rem .92rem !important;}
+.rwd-table th:nth-child(1), .rwd-table td:nth-child(1),
+.rwd-table th:nth-child(2), .rwd-table td:nth-child(2),
+.rwd-table th:nth-child(3), .rwd-table td:nth-child(3){ width:9.2rem !important; }
+.rwd-table th:nth-child(4), .rwd-table td:nth-child(4){ width:6.8rem !important; }
+.rwd-table th:nth-child(5), .rwd-table td:nth-child(5){ width:7.7rem !important; }
+.rwd-table th:nth-child(6), .rwd-table td:nth-child(6){ width:6.4rem !important; }
+.rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
+.rwd-table th:nth-child(8), .rwd-table td:nth-child(8){ width:9rem !important; }
+.rwd-table th:nth-child(9), .rwd-table td:nth-child(9){ width:6.6rem !important; }
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  min-height:38px !important;height:38px !important;
+  padding:.35rem .82rem !important;
+  border-radius:10px !important;
+  background:linear-gradient(180deg,#fcfdff 0%, #f9fbff 100%) !important;
+  border:1px solid #cfdae7 !important;
+  box-shadow:none !important;
+  font-size:.92rem !important;
+}
+.rwd-table td:nth-child(-n+6) .input:focus,
+.rwd-table td:nth-child(-n+6) .select:focus{
+  border-color:#7aa2ff !important;
+  box-shadow:0 0 0 3px rgba(36,87,197,.12) !important;
+}
+.rwd-table td:nth-child(7), .rwd-table td:nth-child(8){font-size:.9rem !important;}
+.rwd-table .del .btn{
+  min-height:38px !important;height:38px !important;
+  border-radius:10px !important;
+  background:linear-gradient(180deg,#fff7f7 0%,#fff1f1 100%) !important;
+  border-color:#efc5c5 !important;
+  color:#c2410c !important;
+}
+
+/* more colorful summary labels with icon chips */
+.summary-grid .summary-card{padding:1rem 1.05rem .95rem !important;}
+.summary-label{display:flex !important;align-items:center !important;gap:.45rem !important;}
+.label-icon{
+  width:1.65rem;height:1.65rem;border-radius:999px;
+  border:1px solid transparent;
+}
+.label-icon-cbm{background:#eef4ff;color:#2457c5;border-color:#d6e4ff;}
+.label-icon-weight{background:#ecfdf3;color:#0f766e;border-color:#ccebd7;}
+.label-icon-air{background:#f4f0ff;color:#6d28d9;border-color:#e3d9ff;}
+.label-icon-sea{background:#fff4e8;color:#c2410c;border-color:#fbd5af;}
+.summary-grid .summary-card:nth-child(1){background:linear-gradient(180deg,#ffffff 0%, #f7faff 100%) !important;}
+.summary-grid .summary-card:nth-child(2){background:linear-gradient(180deg,#ffffff 0%, #f7fdf9 100%) !important;}
+.summary-grid .summary-card:nth-child(3){background:linear-gradient(180deg,#ffffff 0%, #faf7ff 100%) !important;}
+.summary-grid .summary-card:nth-child(4){background:linear-gradient(180deg,#ffffff 0%, #fff9f5 100%) !important;}
+
+/* utilization cards with icon color variety */
+.container-chip{
+  width:1.8rem;height:1.8rem;border-radius:11px;
+  border:1px solid transparent;
+}
+.container-chip-0{background:#eef4ff;color:#2457c5;border-color:#d5e4ff;}
+.container-chip-1{background:#ecfeff;color:#0f766e;border-color:#c6f1f4;}
+.container-chip-2{background:#fff4e8;color:#c2410c;border-color:#fed7aa;}
+#containerCards > div:nth-child(1){border-top:3px solid #2457c5 !important;}
+#containerCards > div:nth-child(2){border-top:3px solid #0f766e !important;}
+#containerCards > div:nth-child(3){border-top:3px solid #c2410c !important;}
+
+@media (max-width: 640px){
+  .rwd-table{min-width:1200px !important;}
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select,
+  .rwd-table .del .btn{min-height:38px !important;height:38px !important;}
+}
+</style>
+
+
+<style id="sleek-cargo-row-v5">
+/* 화물 정보 입력 한 줄형 슬림 개선 */
+.rwd-wrap{
+  border-radius:16px !important;
+}
+.rwd-table{
+  min-width:1180px !important;
+}
+.rwd-table thead th{
+  padding:.68rem .78rem !important;
+  font-size:.78rem !important;
+  line-height:1.15 !important;
+}
+.rwd-table thead th span{
+  margin-top:.12rem !important;
+  font-size:.65rem !important;
+}
+.rwd-table tbody td{
+  padding:.42rem .78rem !important;
+  font-size:.82rem !important;
+}
+
+/* 컬럼 폭: 입력 칸은 한 줄형으로 길고, 결과 칸은 더 컴팩트하게 */
+.rwd-table th:nth-child(1), .rwd-table td:nth-child(1),
+.rwd-table th:nth-child(2), .rwd-table td:nth-child(2),
+.rwd-table th:nth-child(3), .rwd-table td:nth-child(3){ width:8.3rem !important; }
+.rwd-table th:nth-child(4), .rwd-table td:nth-child(4){ width:5.5rem !important; }
+.rwd-table th:nth-child(5), .rwd-table td:nth-child(5){ width:6.2rem !important; }
+.rwd-table th:nth-child(6), .rwd-table td:nth-child(6){ width:5.2rem !important; }
+.rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
+.rwd-table th:nth-child(8), .rwd-table td:nth-child(8){ width:6.8rem !important; }
+.rwd-table th:nth-child(9), .rwd-table td:nth-child(9){ width:5.3rem !important; }
+
+/* 입력칸: 더 낮고 더 날렵하게 */
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  min-height:34px !important;
+  height:34px !important;
+  padding:.22rem .72rem !important;
+  border-radius:10px !important;
+  font-size:.9rem !important;
+  line-height:1 !important;
+}
+.rwd-table td:nth-child(-n+6) .select{
+  padding-right:1.8rem !important;
+}
+
+/* 개당/합계 CBM 값도 더 컴팩트하게 */
+.rwd-table td:nth-child(7),
+.rwd-table td:nth-child(8){
+  font-size:.86rem !important;
+  font-weight:800 !important;
+  letter-spacing:-.02em !important;
+}
+
+/* 삭제 버튼도 행 높이에 맞게 슬림화 */
+.rwd-table .del .btn{
+  min-height:34px !important;
+  height:34px !important;
+  padding:.2rem .6rem !important;
+  border-radius:10px !important;
+  font-size:.82rem !important;
+  gap:.28rem !important;
+}
+.rwd-table .del .btn svg{
+  width:.85rem !important;
+  height:.85rem !important;
+}
+
+/* 헤더/첫 섹션 더 촘촘하게 */
+section.card.p-4.md\:p-5 .mb-3{
+  margin-bottom:.7rem !important;
+}
+section.card.p-4.md\:p-5 > p.mt-3{
+  margin-top:.6rem !important;
+}
+
+@media (max-width: 640px){
+  .rwd-table{
+    min-width:1110px !important;
+  }
+  .rwd-table thead th{
+    padding:.64rem .72rem !important;
+  }
+  .rwd-table tbody td{
+    padding:.38rem .72rem !important;
+  }
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select,
+  .rwd-table .del .btn{
+    min-height:34px !important;
+    height:34px !important;
+  }
+}
+</style>
+
+
+<style id="sleek-row-v6-final">
+/* 1) 화물정보 헤더를 1줄로 정리 */
+.rwd-table thead th br,
+.rwd-table thead th span{
+  display:none !important;
+}
+.rwd-table thead th{
+  white-space:nowrap !important;
+  padding:.62rem .72rem !important;
+  font-size:.77rem !important;
+  line-height:1.1 !important;
+  height:46px;
+  vertical-align:middle !important;
+}
+
+/* 2) 전체 행을 더 날렵하게 */
+.rwd-table{
+  min-width:1090px !important;
+}
+.rwd-table tbody td{
+  padding:.34rem .68rem !important;
+  font-size:.81rem !important;
+  vertical-align:middle !important;
+}
+
+/* 입력칸: 낮고 길게 */
+.rwd-table th:nth-child(1), .rwd-table td:nth-child(1),
+.rwd-table th:nth-child(2), .rwd-table td:nth-child(2),
+.rwd-table th:nth-child(3), .rwd-table td:nth-child(3){ width:7.55rem !important; }
+.rwd-table th:nth-child(4), .rwd-table td:nth-child(4){ width:5.1rem !important; }
+.rwd-table th:nth-child(5), .rwd-table td:nth-child(5){ width:5.9rem !important; }
+.rwd-table th:nth-child(6), .rwd-table td:nth-child(6){ width:4.9rem !important; }
+
+/* 개당/합계 CBM은 더 짧게 */
+.rwd-table th:nth-child(7), .rwd-table td:nth-child(7),
+.rwd-table th:nth-child(8), .rwd-table td:nth-child(8){ width:5.8rem !important; }
+.rwd-table th:nth-child(9), .rwd-table td:nth-child(9){ width:4.7rem !important; }
+
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  min-height:32px !important;
+  height:32px !important;
+  padding:.16rem .64rem !important;
+  border-radius:9px !important;
+  font-size:.88rem !important;
+  line-height:1 !important;
+}
+.rwd-table td:nth-child(-n+6) .select{
+  padding-right:1.55rem !important;
+}
+
+/* 숫자 결과 셀도 컴팩트하게 */
+.rwd-table td:nth-child(7),
+.rwd-table td:nth-child(8){
+  font-size:.84rem !important;
+  font-weight:800 !important;
+  letter-spacing:-.015em !important;
+  text-align:center !important;
+}
+.rwd-table th:nth-child(7),
+.rwd-table th:nth-child(8),
+.rwd-table th:nth-child(9),
+.rwd-table td:nth-child(9){
+  text-align:center !important;
+}
+
+/* 3) 삭제 버튼 축소 + 중앙정렬 */
+.rwd-table .del{
+  text-align:center !important;
+}
+.rwd-table .del .btn{
+  min-height:30px !important;
+  height:30px !important;
+  width:auto !important;
+  min-width:58px !important;
+  padding:.1rem .45rem !important;
+  margin:0 auto !important;
+  border-radius:8px !important;
+  font-size:.78rem !important;
+  gap:.22rem !important;
+  justify-content:center !important;
+}
+.rwd-table .del .btn svg{
+  width:.78rem !important;
+  height:.78rem !important;
+}
+
+/* 안내 문구도 조금 더 촘촘하게 */
+section.card.p-4.md\:p-5 > p.mt-3{
+  margin-top:.5rem !important;
+}
+
+@media (max-width: 640px){
+  .rwd-table{min-width:1040px !important;}
+  .rwd-table thead th{padding:.58rem .64rem !important; font-size:.75rem !important;}
+  .rwd-table tbody td{padding:.32rem .62rem !important;}
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select{height:32px !important; min-height:32px !important;}
+  .rwd-table .del .btn{height:30px !important; min-height:30px !important;}
+}
+</style>
+
+
+<style id="square-clean-v7">
+/* 전체 UI를 라운드보다 네모형으로 정리 */
+.card,
+.gradient-card,
+.rwd-wrap,
+.summary-grid .summary-card,
+#containerCards > div,
+.spec-table tr,
+.btn,
+.btn-ghost,
+.input,
+.select,
+.badge,
+.title-icon,
+.label-icon,
+.container-chip{
+  border-radius:4px !important;
+}
+
+/* 섹션 상단도 조금 더 각지게 */
+main .rounded-\[24px\],
+main .rounded-2xl,
+main .rounded-\[18px\]{
+  border-radius:4px !important;
+}
+
+/* 테이블 헤더: 1줄, 좌측 정렬 */
+.rwd-table thead th{
+  text-align:left !important;
+  white-space:nowrap !important;
+  font-size:.76rem !important;
+  padding:.58rem .68rem !important;
+  height:42px !important;
+}
+.rwd-table thead th br,
+.rwd-table thead th span{
+  display:none !important;
+}
+
+/* 결과값 열과 삭제 열은 제목만 중앙 정렬 */
+.rwd-table thead th:nth-child(7),
+.rwd-table thead th:nth-child(8),
+.rwd-table thead th:nth-child(9){
+  text-align:center !important;
+}
+
+/* 입력 행도 조금 더 단정하게 */
+.rwd-table tbody td{
+  padding:.32rem .62rem !important;
+}
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  height:32px !important;
+  min-height:32px !important;
+  border-radius:4px !important;
+  padding:.12rem .55rem !important;
+}
+
+/* placeholder가 비어있는 상태에서 바로 입력하기 좋게 */
+.input::placeholder{color:transparent !important;}
+
+/* 삭제 버튼 네모 + 중앙 */
+.rwd-table .del,
+.rwd-table td:nth-child(9),
+.rwd-table th:nth-child(9){
+  text-align:center !important;
+}
+.rwd-table .del .btn{
+  border-radius:4px !important;
+  min-width:52px !important;
+  width:auto !important;
+  margin:0 auto !important;
+}
+
+/* 모바일에서도 동일 기조 */
+@media (max-width:640px){
+  .rwd-table thead th{
+    font-size:.74rem !important;
+    padding:.54rem .58rem !important;
+  }
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select{
+    height:32px !important;
+    min-height:32px !important;
+  }
+}
+</style>
+
+
+<style id="blue-readable-v8">
+:root{
+  --page-bg:#f4f8ff;
+  --panel:#ffffff;
+  --panel-soft:#f8fbff;
+  --text:#14233b;
+  --text-strong:#0f1f35;
+  --muted:#5d6f87;
+  --muted-2:#8090a7;
+  --line:#d6e1f0;
+  --line-strong:#c5d4e8;
+  --blue-50:#f3f8ff;
+  --blue-100:#eaf2ff;
+  --blue-200:#d8e7ff;
+  --blue-300:#bdd4ff;
+  --blue-500:#4d86e6;
+  --blue-600:#2f6fd6;
+  --blue-700:#2358ae;
+  --blue-800:#1d488e;
+  --shadow-sm:0 8px 22px rgba(25,60,120,.05);
+  --shadow-md:0 14px 34px rgba(25,60,120,.08);
+}
+
+html,body{background:var(--page-bg) !important;}
+body{
+  color:var(--text) !important;
+  background:
+    radial-gradient(circle at top left, rgba(79,129,231,.09), transparent 24%),
+    linear-gradient(180deg,#f7fbff 0%, #f3f8ff 100%) !important;
+}
+main{max-width:1320px !important;}
+
+/* Global readability */
+h1,h2,h3,strong{color:var(--text-strong) !important;}
+p,.text-slate-500,.text-slate-600{color:var(--muted) !important;}
+
+/* Panels */
+.card,
+.gradient-card,
+.summary-grid .summary-card,
+#containerCards > div{
+  background:var(--panel) !important;
+  border:1px solid var(--line) !important;
+  box-shadow:var(--shadow-sm) !important;
+}
+.gradient-card{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%) !important;
+  box-shadow:var(--shadow-md) !important;
+}
+.gradient-card::after{
+  background:linear-gradient(180deg,var(--blue-300) 0%, var(--blue-600) 100%) !important;
+}
+header h1{
+  color:var(--text-strong) !important;
+  font-size:1.68rem !important;
+  font-weight:800 !important;
+  letter-spacing:-.03em !important;
+}
+.header-subline{
+  color:var(--muted) !important;
+  font-size:.95rem !important;
+  line-height:1.65 !important;
+}
+
+/* Buttons */
+.btn{
+  background:linear-gradient(180deg,var(--blue-600) 0%, var(--blue-700) 100%) !important;
+  border:1px solid var(--blue-700) !important;
+  color:#fff !important;
+  box-shadow:0 8px 20px rgba(47,111,214,.14) !important;
+}
+.btn:hover{background:linear-gradient(180deg,var(--blue-700) 0%, var(--blue-800) 100%) !important;}
+.btn-ghost{
+  background:var(--blue-50) !important;
+  border:1px solid var(--blue-200) !important;
+  color:var(--blue-800) !important;
+  box-shadow:none !important;
+}
+.btn-ghost:hover{background:var(--blue-100) !important;}
+#clearAllBtn{
+  background:#f7faff !important;
+  border-color:var(--blue-200) !important;
+  color:var(--blue-800) !important;
+}
+
+/* Badges / icons - all blue family */
+.badge,
+.title-icon,
+.label-icon,
+.container-chip{
+  background:var(--blue-100) !important;
+  color:var(--blue-700) !important;
+  border:1px solid var(--blue-200) !important;
+}
+.air-rule-toolbar label{
+  background:#fff !important;
+  border:1px solid var(--line) !important;
+  color:var(--blue-800) !important;
+}
+.title-icon-cargo,
+.title-icon-summary,
+.title-icon-util,
+.title-icon-spec,
+.label-icon-cbm,
+.label-icon-weight,
+.label-icon-air,
+.label-icon-sea,
+.container-chip-0,
+.container-chip-1,
+.container-chip-2{
+  background:var(--blue-100) !important;
+  color:var(--blue-700) !important;
+  border-color:var(--blue-200) !important;
+}
+
+/* Section readability */
+section h2{
+  font-size:1.05rem !important;
+  font-weight:800 !important;
+  letter-spacing:-.02em !important;
+}
+section.card > .mb-3 p.text-\[12px\],
+.summary-head p{
+  font-size:.84rem !important;
+  line-height:1.6 !important;
+}
+
+/* Table */
+.rwd-wrap{
+  background:#fff !important;
+  border:1px solid var(--line) !important;
+}
+.rwd-table{
+  background:#fff !important;
+}
+.rwd-table thead th{
+  background:linear-gradient(180deg,#fbfdff 0%, #f4f8ff 100%) !important;
+  color:var(--text-strong) !important;
+  border-bottom:1px solid var(--line-strong) !important;
+  font-weight:800 !important;
+}
+.rwd-table tbody tr:nth-child(even){background:#fbfdff !important;}
+.rwd-table tbody tr:hover{background:#f3f8ff !important;}
+.rwd-table tbody td{
+  color:var(--text) !important;
+  border-bottom:1px solid #e8eff8 !important;
+}
+.rwd-table td:nth-child(7),
+.rwd-table td:nth-child(8){
+  color:var(--blue-700) !important;
+  font-weight:800 !important;
+}
+
+/* Inputs */
+.input,.select,
+.rwd-table td:nth-child(-n+6) .input,
+.rwd-table td:nth-child(-n+6) .select{
+  background:#ffffff !important;
+  border:1px solid var(--line-strong) !important;
+  color:var(--text-strong) !important;
+  box-shadow:none !important;
+}
+.input:focus,.select:focus,
+.rwd-table td:nth-child(-n+6) .input:focus,
+.rwd-table td:nth-child(-n+6) .select:focus{
+  border-color:var(--blue-500) !important;
+  box-shadow:0 0 0 3px rgba(77,134,230,.15) !important;
+  background:#fff !important;
+}
+.input::placeholder{color:#a5b3c6 !important;}
+
+/* Summary cards */
+.summary-head h2{color:var(--text-strong) !important;}
+.summary-grid .summary-card{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%) !important;
+  border-color:var(--line) !important;
+}
+.summary-grid .summary-card::before{
+  height:3px !important;
+  background:linear-gradient(90deg,var(--blue-300) 0%, var(--blue-700) 100%) !important;
+}
+.summary-grid .summary-card .summary-label{
+  color:var(--muted) !important;
+  font-size:.75rem !important;
+  font-weight:800 !important;
+}
+.summary-grid .summary-card .summary-value,
+.summary-grid .summary-card #totalCbm,
+.summary-grid .summary-card #totalWeight,
+.summary-grid .summary-card #airVol,
+.summary-grid .summary-card #seaWm{
+  color:var(--text-strong) !important;
+  font-size:1.9rem !important;
+  font-weight:800 !important;
+}
+#totalCbm,#totalWeight,#airVol,#seaWm{color:var(--blue-700) !important;}
+.summary-grid .summary-card p:last-child,
+.summary-grid .summary-card span{color:var(--muted) !important;}
+
+/* Utilization */
+#containerCards > div{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%) !important;
+}
+#containerCards > div:nth-child(1),
+#containerCards > div:nth-child(2),
+#containerCards > div:nth-child(3){
+  border-top:3px solid var(--blue-600) !important;
+}
+#containerCards .bg-slate-100{background:#dfeafc !important;}
+#containerCards .bg-sky-500{background:var(--blue-600) !important;}
+
+/* Container spec table */
+.spec-table thead{
+  background:#f5f9ff !important;
+}
+.spec-table thead th{
+  color:var(--text-strong) !important;
+  font-weight:800 !important;
+  border-bottom:1px solid var(--line-strong) !important;
+}
+.spec-table td{
+  color:var(--text) !important;
+  border-bottom:1px solid #e8eff8 !important;
+}
+.spec-table tbody tr:nth-child(even){background:#fbfdff !important;}
+
+/* Delete button */
+.rwd-table .del .btn{
+  background:#fff !important;
+  color:var(--blue-800) !important;
+  border:1px solid var(--blue-200) !important;
+}
+.rwd-table .del .btn:hover{background:var(--blue-50) !important;}
+
+/* Footer */
+footer{color:var(--muted-2) !important;}
+
+/* Mobile readability */
+@media (max-width: 640px){
+  html{font-size:15px !important;}
+  header h1{font-size:1.45rem !important;}
+  .header-subline{font-size:.9rem !important;}
+  .summary-grid .summary-card .summary-value,
+  .summary-grid .summary-card #totalCbm,
+  .summary-grid .summary-card #totalWeight,
+  .summary-grid .summary-card #airVol,
+  .summary-grid .summary-card #seaWm{font-size:1.7rem !important;}
+}
+</style>
+
+
+<style id="simple-summary-v9">
+/* 계산 요약 색상 단순화 */
+.summary-grid .summary-card,
+.summary-grid .summary-card:nth-child(1),
+.summary-grid .summary-card:nth-child(2),
+.summary-grid .summary-card:nth-child(3),
+.summary-grid .summary-card:nth-child(4){
+  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%) !important;
+  border:1px solid #d6e1f0 !important;
+  box-shadow:0 8px 22px rgba(25,60,120,.05) !important;
+}
+
+.summary-grid .summary-card::before,
+.summary-grid .summary-card:nth-child(1)::before,
+.summary-grid .summary-card:nth-child(2)::before,
+.summary-grid .summary-card:nth-child(3)::before,
+.summary-grid .summary-card:nth-child(4)::before{
+  height:3px !important;
+  background:linear-gradient(90deg,#c8d9f3 0%, #5e88cc 100%) !important;
+}
+
+.summary-grid .summary-card .summary-label{
+  color:#5d6f87 !important;
+}
+
+/* 아이콘도 모두 동일한 블루 톤으로 단순화 */
+.summary-grid .label-icon,
+.summary-grid .label-icon-cbm,
+.summary-grid .label-icon-weight,
+.summary-grid .label-icon-air,
+.summary-grid .label-icon-sea{
+  background:#eaf2ff !important;
+  color:#285bb3 !important;
+  border:1px solid #d7e5ff !important;
+}
+
+/* 숫자도 모두 같은 컬러 체계로 정리 */
+.summary-grid .summary-card .summary-value,
+.summary-grid .summary-card #totalCbm,
+.summary-grid .summary-card #totalWeight,
+.summary-grid .summary-card #airVol,
+.summary-grid .summary-card #seaWm,
+#totalCbm,#totalWeight,#airVol,#seaWm{
+  color:#1f4f99 !important;
+  font-weight:800 !important;
+}
+
+.summary-grid .summary-card p:last-child,
+.summary-grid .summary-card span{
+  color:#5d6f87 !important;
+}
+</style>
+
+
+<style id="mobile-optimization-v10">
+/* ===== Mobile readability optimization ===== */
+@media (max-width: 768px){
+  html{font-size:15px !important;}
+  body{line-height:1.55 !important;}
+  main{
+    padding:1rem !important;
+    max-width:100% !important;
+  }
+
+  /* Header */
+  .gradient-card{
+    padding:1rem !important;
+  }
+  header h1{
+    font-size:1.35rem !important;
+    line-height:1.25 !important;
+  }
+  .header-subline{
+    font-size:.88rem !important;
+    line-height:1.55 !important;
+    margin-top:.35rem !important;
+  }
+  .air-rule-toolbar{
+    margin-top:.75rem !important;
+    gap:.45rem !important;
+  }
+  .badge,
+  .air-rule-toolbar label{
+    font-size:.74rem !important;
+  }
+  .title-icon{width:1.65rem !important;height:1.65rem !important;}
+  .title-icon svg{width:.92rem !important;height:.92rem !important;}
+
+  /* Section card spacing */
+  .card{
+    padding:1rem !important;
+  }
+  section.card > .mb-3.flex{
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:.8rem !important;
+  }
+  section.card > .mb-3.flex > .flex{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:.5rem !important;
+  }
+  #addRowBtn,
+  #clearAllBtn{
+    width:100% !important;
+    justify-content:center !important;
+  }
+  section h2{
+    font-size:1rem !important;
+    line-height:1.3 !important;
+  }
+  section.card > .mb-3 p.text-\[12px\],
+  .summary-head p,
+  .mt-3.text-\[11px\]{
+    font-size:.8rem !important;
+    line-height:1.55 !important;
+  }
+
+  /* Cargo input: convert table to stacked mobile cards */
+  .rwd-wrap{
+    overflow:visible !important;
+    border:0 !important;
+    background:transparent !important;
+  }
+  .rwd-table,
+  .rwd-table thead,
+  .rwd-table tbody,
+  .rwd-table tr,
+  .rwd-table th,
+  .rwd-table td{
+    display:block !important;
+    width:100% !important;
+  }
+  .rwd-table{
+    min-width:0 !important;
+    background:transparent !important;
+  }
+  .rwd-table thead{
+    display:none !important;
+  }
+  .rwd-table tbody{
+    display:grid !important;
+    gap:.75rem !important;
+  }
+  .rwd-table tbody tr{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:.65rem .65rem !important;
+    padding:.8rem !important;
+    margin:0 !important;
+    border:1px solid #d6e1f0 !important;
+    background:#ffffff !important;
+    box-shadow:0 6px 18px rgba(25,60,120,.05) !important;
+  }
+  .rwd-table tbody td{
+    padding:0 !important;
+    border:0 !important;
+    text-align:left !important;
+    font-size:.8rem !important;
+  }
+  .rwd-table tbody td::before{
+    content:attr(data-label);
+    display:block;
+    margin-bottom:.28rem;
+    font-size:.73rem;
+    font-weight:700;
+    color:#37527a;
+    line-height:1.25;
+  }
+  .rwd-table tbody td:nth-child(7),
+  .rwd-table tbody td:nth-child(8){
+    border:1px solid #dce7f7 !important;
+    background:#f7fbff !important;
+    padding:.6rem .65rem !important;
+  }
+  .rwd-table tbody td:nth-child(7)::before,
+  .rwd-table tbody td:nth-child(8)::before{
+    margin-bottom:.2rem;
+  }
+  .rwd-table tbody td:nth-child(9){
+    grid-column:1 / -1 !important;
+    text-align:center !important;
+    padding-top:.1rem !important;
+  }
+  .rwd-table tbody td:nth-child(9)::before{
+    display:none !important;
+  }
+  .rwd-table td:nth-child(-n+6) .input,
+  .rwd-table td:nth-child(-n+6) .select{
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    height:38px !important;
+    min-height:38px !important;
+    font-size:.92rem !important;
+    padding:.2rem .62rem !important;
+    background:#fff !important;
+  }
+  .rwd-table .del .btn{
+    min-width:74px !important;
+    height:34px !important;
+    min-height:34px !important;
+    margin:0 auto !important;
+  }
+
+  /* Summary / utilization / specs */
+  .summary-head{margin-top:1rem !important;}
+  .summary-grid{
+    gap:.75rem !important;
+  }
+  .summary-grid .summary-card{
+    padding:.85rem .9rem !important;
+  }
+  .summary-grid .summary-card .summary-value,
+  .summary-grid .summary-card #totalCbm,
+  .summary-grid .summary-card #totalWeight,
+  .summary-grid .summary-card #airVol,
+  .summary-grid .summary-card #seaWm{
+    font-size:1.55rem !important;
+    line-height:1.1 !important;
+  }
+  .summary-grid .summary-card p:last-child{
+    font-size:.77rem !important;
+    line-height:1.45 !important;
+    word-break:keep-all;
+  }
+
+  #containerCards{
+    gap:.75rem !important;
+  }
+  #containerCards > div{
+    padding:.9rem !important;
+  }
+
+  /* Container spec table already has mobile cards; just tighten type */
+  .spec-table td,
+  .spec-table td::before{
+    font-size:.8rem !important;
+  }
+}
+
+@media (max-width: 420px){
+  main{padding:.8rem !important;}
+  .gradient-card,.card{padding:.85rem !important;}
+  header h1{font-size:1.25rem !important;}
+  .header-subline{font-size:.84rem !important;}
+  section.card > .mb-3.flex > .flex{
+    grid-template-columns:1fr !important;
+  }
+  .rwd-table tbody tr{
+    grid-template-columns:1fr !important;
+  }
+  .rwd-table tbody td:nth-child(9){
+    grid-column:auto !important;
+  }
+  .summary-grid .summary-card .summary-value,
+  .summary-grid .summary-card #totalCbm,
+  .summary-grid .summary-card #totalWeight,
+  .summary-grid .summary-card #airVol,
+  .summary-grid .summary-card #seaWm{
+    font-size:1.45rem !important;
+  }
+}
+</style>
+
 </head>
 <body class="min-h-full bg-slate-50">
   <!-- Tailwind dynamic class preflight (hidden element to ensure JIT includes classes used via JS) -->
   <div class="hidden bg-rose-500 ring-rose-200 text-rose-600 text-emerald-600"></div>
 
-  <main class="mx-auto max-w-6xl p-6 md:p-10">
+  <main class="mx-auto max-w-5xl p-5 md:p-8">
     <!-- Header -->
-    <header class="mb-6 gradient-card rounded-2xl p-6 md:p-8 flex flex-col gap-4">
+    <header class="mb-5 gradient-card rounded-[24px] p-5 md:p-7 flex flex-col gap-3">
 
       <div>
-        <h1 class="flex items-center gap-2 text-2xl md:text-3xl font-extrabold tracking-tight">
+        <h1 class="flex items-center gap-2 text-xl md:text-2xl font-semibold tracking-tight">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7">
             <rect x="3.5" y="3" width="17" height="18" rx="2"></rect>
             <path d="M7 7h10M7 12h10M7 17h3"></path>
           </svg>
           CBM 계산기
         </h1>
-        <p class="header-subline text-slate-100/85 text-sm md:text-base">컨테이너 적재 부피(CBM, m³)를 쉽고 정확하게 계산하세요. 여러 박스를 한 번에 입력할 수 있어요.</p>
+        <p class="header-subline text-slate-100/80 text-xs md:text-sm">컨테이너 적재 부피(CBM, m³)를 쉽고 정확하게 계산하세요. 여러 박스를 한 번에 입력할 수 있어요.</p>
       </div>
       <div class="air-rule-toolbar flex items-center gap-2 text-xs text-white/85">
         <span class="badge">항공 부피중량 규정</span>
@@ -231,24 +2042,24 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
       </div></header>
 
     <!-- Input Card -->
-    <section class="card p-4 md:p-6">
+    <section class="card p-4 md:p-5">
       <div class="mb-3 flex items-center justify-between gap-2">
-        <h2 class="text-base md:text-lg font-semibold">화물 정보 입력</h2>
+        <div><p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">Cargo Input</p><h2 class="mt-1 text-base md:text-lg font-semibold title-row"><span class="title-icon title-icon-cargo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2Z"></path><path d="M12 22V12"></path><path d="m3.5 7 8.5 5 8.5-5"></path></svg></span><span>화물 정보 입력</span></h2><p class="mt-1 text-[12px] text-slate-500">최종 포장 후의 화물 정보를 입력해 주세요. 박스별 규격, 중량, 수량을 입력하면 총 CBM이 자동 계산됩니다.</p></div>
         <div class="flex gap-2">
-          <button id="addRowBtn" class="btn btn-ghost" type="button">+ 행 추가</button>
-          <button id="clearAllBtn" class="btn btn-ghost" type="button">초기화</button>
+          <button id="addRowBtn" class="btn btn-ghost" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M12 5v14M5 12h14"></path></svg><span>행 추가</span></button>
+          <button id="clearAllBtn" class="btn btn-ghost" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg><span>초기화</span></button>
         </div>
       </div>
 
       <div class="rwd-wrap">
-        <table class="rwd-table text-sm">
+        <table class="rwd-table text-[12px]">
           <thead>
             <tr class="border-b border-slate-200">
-              <th class="py-2 pr-3">가로(L)</th>
-              <th class="py-2 pr-3">세로(W)</th>
-              <th class="py-2 pr-3">높이(H)</th>
+              <th class="py-2 pr-3">가로 (Length)</th>
+              <th class="py-2 pr-3">세로 (Width)</th>
+              <th class="py-2 pr-3">높이 (Height)</th>
               <th class="py-2 pr-3">단위</th>
-              <th class="py-2 pr-3">중량(kg)</th>
+              <th class="py-2 pr-3">중량 (kg으로 입력)</th>
               <th class="py-2 pr-3">수량</th>
               <th class="py-2 pr-3 text-right">개당 CBM</th>
               <th class="py-2 pr-3 text-right">합계 CBM</th>
@@ -259,42 +2070,46 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
         </table>
       </div>
 
-      <p class="mt-3 text-xs text-slate-500">Tip: 단위(mm/cm/m/inch)를 바꾸면 자동으로 CBM이 다시 계산됩니다. 입력값은 최종 포장 기준을 권장합니다.</p>
+      <p class="mt-3 text-[11px] text-slate-500">Tip. 입력 단위를 바꾸면 CBM이 자동으로 다시 계산됩니다. 실제 선적 기준의 최종 포장 규격으로 입력하면 더 정확합니다.</p>
     </section>
 
     <!-- Summary Grid -->
-    <section class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="card p-4">
-        <p class="text-xs text-slate-500">총 CBM</p>
-        <p id="totalCbm" class="text-2xl font-bold tracking-tight">0</p>
+    <section class="mt-7 mb-3 summary-head">
+      <h2 class="text-base md:text-lg font-semibold title-row"><span class="title-icon title-icon-summary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M4 19h16"></path><path d="M7 16V8"></path><path d="M12 16V5"></path><path d="M17 16v-4"></path></svg></span><span>계산 요약</span></h2>
+      <p class="mt-1 text-[12px] text-slate-500">총 부피, 총 중량, 항공 산출중량, 해상 톤측정을 한눈에 확인할 수 있습니다.</p>
+    </section>
+    <section class="summary-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="card p-4 summary-card">
+        <p class="summary-label"><span class="label-icon label-icon-cbm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2Z"></path><path d="M12 22V12"></path><path d="m3.5 7 8.5 5 8.5-5"></path></svg></span>총 CBM</p>
+        <p id="totalCbm" class="summary-value">0</p>
       </div>
-      <div class="card p-4">
-        <p class="text-xs text-slate-500">총 중량 (kg)</p>
-        <p id="totalWeight" class="text-2xl font-bold tracking-tight">0</p>
+      <div class="card p-4 summary-card">
+        <p class="summary-label"><span class="label-icon label-icon-weight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M7 9h10l2.5 10h-15L7 9Z"></path><path d="M9.5 9a2.5 2.5 0 1 1 5 0"></path></svg></span>총 중량 (kg)</p>
+        <p id="totalWeight" class="summary-value">0</p>
       </div>
-      <div class="card p-4">
-        <p class="text-xs text-slate-500">항공 산출중량 C/W (kg)</p>
-        <p id="airVol" class="text-2xl font-bold tracking-tight">0</p>
+      <div class="card p-4 summary-card">
+        <p class="summary-label"><span class="label-icon label-icon-air"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M2 16h20"></path><path d="m6 12 4-4 4 4"></path><path d="M10 8v8"></path><path d="m18 6-2 2"></path><path d="m16 6 2 2"></path></svg></span>항공 산출중량 C/W (kg)</p>
+        <p id="airVol" class="summary-value">0</p>
         <p class="text-[11px] text-slate-500">실중량 <span id="airActualW">0</span> kg · 부피중량 <span id="airVolOnly">0</span> kg (÷ <span id="airFactorLabel">6000</span>)</p>
       </div>
-      <div class="card p-4">
-        <p class="text-xs text-slate-500">해상 톤측정 (kg)</p>
-        <p id="seaWm" class="text-2xl font-bold tracking-tight">0</p>
+      <div class="card p-4 summary-card">
+        <p class="summary-label"><span class="label-icon label-icon-sea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M3 15c1.2 1 2.4 1.5 3.6 1.5S9 16 10.2 15c1.2 1 2.4 1.5 3.6 1.5s2.4-.5 3.6-1.5c1.2 1 2.4 1.5 3.6 1.5"></path><path d="M5 12V8l7-3 7 3v4"></path></svg></span>해상 톤측정 (kg)</p>
+        <p id="seaWm" class="summary-value">0</p>
         <p class="text-[11px] text-slate-500">(Σ m³ × 1000)</p>
       </div>
     </section>
 
     <!-- Utilization -->
-    <section class="mt-6 card p-4 md:p-6">
-      <h2 class="text-base md:text-lg font-semibold mb-4">컨테이너 용적 대비 적재율</h2>
+    <section class="mt-5 card p-4 md:p-5">
+      <h2 class="text-base md:text-lg font-semibold mb-1 title-row"><span class="title-icon title-icon-util"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M10 17h4"></path><path d="M3 6h11v8H3z"></path><path d="M14 9h3l4 4v1h-7V9z"></path><circle cx="7.5" cy="17.5" r="1.5"></circle><circle cx="17.5" cy="17.5" r="1.5"></circle></svg></span><span>컨테이너 용적 대비 적재율</span></h2><p class="mb-4 text-sm text-slate-500">입력한 총 CBM을 기준으로 20FT, 40FT, 40HC 적재 여유를 비교합니다.</p>
       <div id="containerCards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
     </section>
 
     <!-- Specs (centered) -->
-    <section class="mt-6 card p-4 md:p-6">
-      <h2 class="text-base md:text-lg font-semibold mb-3 text-center">컨테이너 규격</h2>
+    <section class="mt-5 card p-4 md:p-5">
+      <h2 class="text-lg md:text-xl font-semibold mb-1 text-center title-row justify-center"><span class="title-icon title-icon-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m3 21 18-18"></path><path d="M14 4 20 10"></path><path d="M8 10l2 2"></path><path d="M5 13l2 2"></path><path d="M11 7l2 2"></path></svg></span><span>컨테이너 규격</span></h2><p class="mb-4 text-sm text-slate-500 text-center">실무에서 자주 확인하는 대표 컨테이너 규격을 보기 쉽게 정리했습니다.</p>
       <div class="overflow-x-auto">
-        <table class="w-full text-sm spec-table">
+        <table class="w-full text-[12.5px] spec-table">
           <thead class="border-b border-slate-200">
             <tr>
               <th class="py-2 pr-3">Size &amp; Type</th>
@@ -343,7 +2158,7 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
       </div>
     </section>
 
-    <footer class="mt-8 text-center text-xs text-slate-500">© <span id="year"></span> CBM Calculator UI v1.6.1 • Made by KBRIDGE</footer>
+    <footer class="mt-7 text-center text-[11px] text-slate-500">© <span id="year"></span> CBM Calculator UI v1.6.1 • Made by KBRIDGE</footer>
   </main>
 
 <script>
@@ -390,18 +2205,22 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
   const containerBars = [];
   CONTAINERS.forEach((c, idx)=>{
     const card = document.createElement('div');
-    card.className = 'p-4 rounded-2xl ring-1 ring-slate-200 bg-white shadow-sm';
+    card.className = 'p-4 rounded-[18px] ring-1 ring-slate-200 bg-white shadow-[0_8px_24px_rgba(15,23,42,.05)]';
+    const containerIcons = [`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M8 5v14M16 5v14"></path></svg>`, `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><rect x="2.5" y="6" width="19" height="12" rx="2"></rect><path d="M7 6v12M12 6v12M17 6v12"></path></svg>`, `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><rect x="3" y="4.5" width="18" height="15" rx="2"></rect><path d="M8 4.5v15M16 4.5v15"></path><path d="M3 9h18"></path></svg>`];
     card.innerHTML = `
-      <div class="flex items-center justify-between">
-        <div class="text-sm font-semibold">${c.name}</div>
-        <div class="text-xs text-slate-500">용적 ${c.cubic} m³</div>
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <span class="container-chip container-chip-${idx}">${containerIcons[idx]}</span>
+          <div class="text-[13px] font-semibold tracking-tight text-slate-800">${c.name}</div>
+        </div>
+        <div class="text-[11px] text-slate-500">용적 ${c.cubic} m³</div>
       </div>
       <div class="mt-3 h-3 w-full rounded-full bg-slate-100 overflow-hidden">
         <div class="h-3 w-0 rounded-full bg-sky-500 transition-all" id="bar-${idx}"></div>
       </div>
-      <div class="mt-2 text-sm"><span id="label-${idx}">0 / ${c.cubic} m³ (0%)</span></div>
-      <div class="mt-1 text-xs hidden" id="note-${idx}"></div>
-      <div class="mt-1 text-xs hidden" id="fit-${idx}"></div>
+      <div class="mt-2 text-[12px]"><span id="label-${idx}">0 / ${c.cubic} m³ (0%)</span></div>
+      <div class="mt-1 text-[11px] hidden" id="note-${idx}"></div>
+      <div class="mt-1 text-[11px] hidden" id="fit-${idx}"></div>
     `;
     containerCardsWrap.appendChild(card);
     containerBars.push({
@@ -418,9 +2237,9 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
     const tr = document.createElement('tr');
     tr.className = 'border-b border-slate-100 last:border-0';
     tr.innerHTML = `
-      <td class="py-2 pr-3" data-label="가로(L)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="0" aria-label="길이(L)"></td>
-      <td class="py-2 pr-3" data-label="세로(W)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="0" aria-label="세로(W)"></td>
-      <td class="py-2 pr-3" data-label="높이(H)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="0" aria-label="높이(H)"></td>
+      <td class="py-2 pr-3" data-label="가로(L)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="" aria-label="길이(L)"></td>
+      <td class="py-2 pr-3" data-label="세로(W)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="" aria-label="세로(W)"></td>
+      <td class="py-2 pr-3" data-label="높이(H)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="" aria-label="높이(H)"></td>
       <td class="py-2 pr-3" data-label="단위">
         <select class="select" aria-label="단위">
           <option value="mm">mm</option>
@@ -429,11 +2248,11 @@ html { font-size: clamp(14px, 3.2vw, 16px); }
           <option value="inch">inch</option>
         </select>
       </td>
-      <td class="py-2 pr-3" data-label="중량(kg)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="0" aria-label="중량(kg)"></td>
-      <td class="py-2 pr-3" data-label="수량"><input type="number" inputmode="numeric" step="1" min="0" value="1" class="input" aria-label="수량"></td>
+      <td class="py-2 pr-3" data-label="중량(kg)"><input type="number" inputmode="decimal" step="0.01" min="0" class="input" placeholder="" aria-label="중량(kg)"></td>
+      <td class="py-2 pr-3" data-label="수량"><input type="number" inputmode="numeric" step="1" min="0" class="input" placeholder="" aria-label="수량"></td>
       <td class="py-2 pr-3 text-right font-mono tabular-nums" data-label="개당 CBM">0</td>
       <td class="py-2 pr-3 text-right font-mono tabular-nums" data-label="합계 CBM">0</td>
-      <td class="py-2 del" data-label="삭제"><button type="button" class="btn btn-ghost text-slate-600 w-full sm:w-auto">삭제</button></td>
+      <td class="py-2 del" data-label="삭제"><button type="button" class="btn btn-ghost text-slate-600 w-full sm:w-auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path></svg><span>삭제</span></button></td>
     `;
 
     const [lenI, widI, heiI] = tr.querySelectorAll('input');
